@@ -1,0 +1,19 @@
+name: ci
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'get code'
+        uses: actions/checkout@v4
+      - name: "get deps"
+        run: |
+          sudo apt update -y
+          sudo apt install -y libunwind-dev
+          sudo bash -x dependencies.sh
+
+
